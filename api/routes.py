@@ -48,8 +48,10 @@ def get_videogames() -> List[Dict[str, Union[int, str, float]]]:
     :return: List of video games
     :rtype: list
     """
+    LOGGER.info("Received GET request for /videogames")
     try:
         videogames = VideoGame.query.all()
+        LOGGER.info(f"Retrieved {len(videogames)} video games from the database")
         videogames_list = [
             {
                 "id": vg.id,
